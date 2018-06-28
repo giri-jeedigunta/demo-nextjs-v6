@@ -1,21 +1,16 @@
+const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$'
+
 module.exports = {
-  setupFiles: ['<rootDir>/jest.setup.js'],
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
-  testRegex: '\\.test\\.(t|j)s(x)',
+  // setupFiles: ['<rootDir>/jest.setup.js'],
+  testRegex: TEST_REGEX,
   transform: {
-    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest'
+    '^.+\\.tsx?$': 'babel-jest'
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  moduleNameMapper: {
-    '\\.(scss|svg)$': '<rootDir>/__mocks__/empty-module.js'
-  },
-  collectCoverageFrom: [
-    '!jest.config.js',
-    '!jest.setup.js',
-    '!next.config.js',
-    '**/*.{js,jsx,ts,tsx}',
-    '!coverage/**',
-    '!production-server/**',
-    '!server/**'
-  ]
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/', '<rootDir>/node_modules/'
+  ],
+  moduleFileExtensions: [
+    'ts', 'tsx', 'js', 'jsx'
+  ],
+  collectCoverage: true
 }
